@@ -4,7 +4,6 @@ class Trainning001 {
         Singletion object = Singletion.getInstance();
     }
 }
-
     // 单例模式
 class Singletion {
     private Singletion() {
