@@ -1,11 +1,11 @@
 class Trainning001 {
-    // 单例模式
     public static void main(String[] args) {
-        Singletion object = Singletion.getInstance();
         System.out.print("Hello World");
+        Singletion object = Singletion.getInstance();
     }
 }
 
+    // 单例模式
 class Singletion {
     private Singletion() {
     };
