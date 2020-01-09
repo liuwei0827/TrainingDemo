@@ -1,3 +1,7 @@
+import java.util.Stack;
+
+import sun.misc.Queue;
+
 class Training005 {
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -9,7 +13,7 @@ class Training005 {
         TreeNode a = new TreeNode(1, b, c);
 
         BinaryTree bTree = new BinaryTree();
-        bTree.aft_order(a);
+        bTree.width_order(a);
     }
 }
 
@@ -23,6 +27,24 @@ class BinaryTree {
         }
     }
 
+    // 前序非递归
+    void pre_order2(TreeNode pNode) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode treeNode = pNode;
+        while (treeNode != null || !stack.isEmpty()) {
+            while (treeNode != null) {
+                System.out.print(treeNode.value + " ");
+                stack.push(treeNode);
+                treeNode = treeNode.LeftNode;
+            }
+
+            if (!stack.isEmpty()) {
+                treeNode = stack.pop();
+                treeNode = treeNode.RightNode;
+            }
+        }
+    }
+
     // 中序递归
     void mid_order(TreeNode pNode) {
         if (pNode != null) {
@@ -32,12 +54,48 @@ class BinaryTree {
         }
     }
 
+    // 中序非递归
+    void mid_order2(TreeNode pNode) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode treeNode = pNode;
+        while (treeNode != null || !stack.isEmpty()) {
+            while (treeNode != null) {
+                stack.push(treeNode);
+                treeNode = treeNode.LeftNode;
+            }
+
+            if (!stack.isEmpty()) {
+                treeNode = stack.pop();
+                System.out.print(treeNode.value + " ");
+                treeNode = treeNode.RightNode;
+            }
+        }
+    }
+
     // 后序递归
     void aft_order(TreeNode pNode) {
         if (pNode != null) {
             aft_order(pNode.LeftNode);
             aft_order(pNode.RightNode);
             System.out.print(pNode.value + " ");
+        }
+    }
+
+    // 后序非递归TODO
+
+    // 广度遍历TODO
+    void width_order(TreeNode pNode) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(pNode);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            System.out.print(node.value + " ");
+            if (node.LeftNode != null) {
+                queue.offer(node.LeftNode);
+            }
+            if (node.RightNode != null) {
+                queue.offer(node.RightNode);
+            }
         }
     }
 }
