@@ -4,7 +4,8 @@ class Training004 {
         int[] a = { 1, 4, 6, 8, 3, 5, 9 };
 
         Sort s = new Sort();
-        for (int i : s.sort(a)) {
+        s.quick_sort(a, 0, a.length - 1);
+        for (int i : a) {
             System.out.print(i + " ");
         }
     }
@@ -29,7 +30,31 @@ class Sort {
     }
 
     // 快速排序
-
+    void quick_sort(int[] src, int l, int r) {
+        if (l < r) {
+            int i = l;
+            int j = r;
+            int k = src[l];
+            while (i < j) {
+                while (i < j && src[j] >= k) {
+                    j--;
+                }
+                if (i < j) {
+                    src[i++] = src[j];
+                }
+                while (i < j && src[i] <= k) {
+                    i++;
+                }
+                if (i < j) {
+                    src[j--] = src[i];
+                }
+            }
+            src[i] = k;
+            quick_sort(src, l, i - 1);
+            quick_sort(src, i + 1, r);
+        }
+    }
+    
     // 选择排序
 
     // 插入排序
