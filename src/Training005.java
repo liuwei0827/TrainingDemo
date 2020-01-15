@@ -1,6 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
-
-import sun.misc.Queue;
 
 class Training005 {
     public static void main(String[] args) {

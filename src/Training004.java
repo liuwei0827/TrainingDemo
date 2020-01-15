@@ -18,11 +18,16 @@ class Sort {
         int i = 0;
         int j = 0;
         for (i = 0; i < src.length - 1; i++) {
+            boolean isSorted = true;
             for (j = 0; j < src.length - 1 - i; j++) {
                 if (src[j] > src[j + 1]) {
                     int tmp = src[j + 1];
                     src[j + 1] = src[j];
                     src[j] = tmp;
+                    isSorted = false;
+                }
+                if (isSorted == true) {
+                    break;
                 }
             }
         }
@@ -54,7 +59,7 @@ class Sort {
             quick_sort(src, i + 1, r);
         }
     }
-    
+
     // 选择排序
 
     // 插入排序

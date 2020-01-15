@@ -1,7 +1,5 @@
 import java.util.Stack;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 class Training008 {
     public static void main(String[] args) {
         System.out.println("Hello World");
