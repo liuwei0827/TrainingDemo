@@ -4,7 +4,8 @@ class Training004 {
         int[] a = { 1, 4, 6, 8, 3, 5, 9 };
 
         Sort s = new Sort();
-        s.quick_sort(a, 0, a.length - 1);
+        s.heapSort(a);;
+//        s.quick_sort(a, 0, a.length - 1);
         for (int i : a) {
             System.out.print(i + " ");
         }
@@ -65,4 +66,32 @@ class Sort {
     // 插入排序
 
     // 堆排序
+    void downAdjust(int[] array, int parentIndex, int lenght) {
+        int tmp = array[parentIndex];
+        int childrenIndex = parentIndex * 2 + 1;
+        while (childrenIndex < lenght) {
+            if (childrenIndex + 1 < lenght && array[childrenIndex] < array[childrenIndex + 1]) {
+                childrenIndex++;
+            }
+            if (tmp >= array[childrenIndex]) {
+                break;
+            }
+            array[parentIndex] = array[childrenIndex];
+            parentIndex = childrenIndex;
+            childrenIndex = 2 * childrenIndex + 1;
+        }
+        array[parentIndex] = tmp;
+    }
+
+    void heapSort(int[] array){
+        for(int i=(array.length-2)/2;i>=0;i--){
+            downAdjust(array, i, array.length);
+        }
+        for(int i=array.length-1;i>0;i--){
+            int tmp=array[i];
+            array[i]=array[0];
+            array[0]=tmp;
+            downAdjust(array, 0, i);
+        }
+    }
 }
