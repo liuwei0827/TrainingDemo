@@ -14,10 +14,55 @@ class Training005 {
 
         BinaryTree bTree = new BinaryTree();
         bTree.width_order(a);
+        System.out.println("");
+        System.out.println(bTree.treeDeep(a));
+        System.out.println(bTree.treeWidth(a));
     }
 }
 
 class BinaryTree {
+    // 二叉树的深度
+    int treeDeep(TreeNode treeNode) {
+        if (treeNode == null) {
+            return 0;
+        }
+        int leftDeep = treeDeep(treeNode.LeftNode);
+        int rightDeep = treeDeep(treeNode.RightNode);
+        return leftDeep > rightDeep ? leftDeep + 1 : rightDeep + 1;
+    }
+
+    // 二叉树的宽度
+    int treeWidth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int lastLevelWidth = 0;
+        int currentLevelWidth = 0;
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        int nWidth = 1;
+        lastLevelWidth = 1;
+        TreeNode pNode = null;
+
+        while (!queue.isEmpty()) {
+            while (lastLevelWidth != 0) {
+                pNode = queue.poll();
+                if (pNode.LeftNode != null) {
+                    queue.offer(pNode.LeftNode);
+                }
+                if (pNode.RightNode != null) {
+                    queue.offer(pNode.RightNode);
+                }
+                lastLevelWidth--;
+            }
+            currentLevelWidth = queue.size();
+            nWidth = currentLevelWidth > nWidth ? currentLevelWidth : nWidth;
+            lastLevelWidth = currentLevelWidth;
+        }
+        return nWidth;
+    }
+
     // 前序递归
     void pre_order(TreeNode pNode) {
         if (pNode != null) {
