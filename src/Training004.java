@@ -4,8 +4,9 @@ class Training004 {
         int[] a = { 1, 4, 6, 8, 3, 5, 9 };
 
         Sort s = new Sort();
-        s.heapSort(a);;
-//        s.quick_sort(a, 0, a.length - 1);
+        s.selectSort(a);
+        ;
+        // s.quick_sort(a, 0, a.length - 1);
         for (int i : a) {
             System.out.print(i + " ");
         }
@@ -15,7 +16,7 @@ class Training004 {
 // 各种常用排序算法
 class Sort {
     // 冒泡排序
-    int[] sort(int[] src) {
+    int[] bubbleSort(int[] src) {
         int i = 0;
         int j = 0;
         for (i = 0; i < src.length - 1; i++) {
@@ -62,8 +63,35 @@ class Sort {
     }
 
     // 选择排序
+    void selectSort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                int tmp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = tmp;
+            }
+        }
+    }
 
     // 插入排序
+    void insertSort(int[] array) {
+        int tmp = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (array[j - 1] > array[j]) {
+                    tmp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = tmp;
+                }
+            }
+        }
+    }
 
     // 堆排序
     void downAdjust(int[] array, int parentIndex, int lenght) {
@@ -82,15 +110,14 @@ class Sort {
         }
         array[parentIndex] = tmp;
     }
-
-    void heapSort(int[] array){
-        for(int i=(array.length-2)/2;i>=0;i--){
+    void heapSort(int[] array) {
+        for (int i = (array.length - 2) / 2; i >= 0; i--) {
             downAdjust(array, i, array.length);
         }
-        for(int i=array.length-1;i>0;i--){
-            int tmp=array[i];
-            array[i]=array[0];
-            array[0]=tmp;
+        for (int i = array.length - 1; i > 0; i--) {
+            int tmp = array[i];
+            array[i] = array[0];
+            array[0] = tmp;
             downAdjust(array, 0, i);
         }
     }
