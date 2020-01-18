@@ -4,9 +4,9 @@ class Training001 {
         threadtest t = new threadtest();
         Thread t1 = new Thread(t);
         Thread t2 = new Thread(t);
-//        t1.start();
-//        t2.start();
-        t.run();
+        t1.start();
+        t2.start();
+//        t.run();
         }
 }
 
@@ -15,9 +15,11 @@ class threadtest implements Runnable{
     int args=0;
     @Override
     public void run() {
-        for(int i=0;i<100;i++){
-            System.out.println(Thread.currentThread().getName()+":"+args);
-            args++;
+        synchronized(this){
+            for(int i=0;i<100;i++){
+                System.out.println(Thread.currentThread().getName()+":"+args);
+                args++;
+            }           
         }
     }
 }
