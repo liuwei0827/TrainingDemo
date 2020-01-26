@@ -4,10 +4,10 @@ class Training004 {
         int[] a = { 1, 4, 6, 8, 3, 5, 9 };
 
         Sort s = new Sort();
-        s.selectSort(a);
-        ;
-        // s.quick_sort(a, 0, a.length - 1);
-        for (int i : a) {
+        // s.selectSort(a);
+        int[] sorteda = s.countSort(a);
+
+        for (int i : sorteda) {
             System.out.print(i + " ");
         }
     }
@@ -110,6 +110,7 @@ class Sort {
         }
         array[parentIndex] = tmp;
     }
+
     void heapSort(int[] array) {
         for (int i = (array.length - 2) / 2; i >= 0; i--) {
             downAdjust(array, i, array.length);
@@ -120,5 +121,30 @@ class Sort {
             array[0] = tmp;
             downAdjust(array, 0, i);
         }
+    }
+
+    // 计数排序
+    int[] countSort(int[] array) {
+        // 取得最大值
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        // 根据最大值建立数组并计数
+        int[] countArray = new int[max + 1];
+        for (int i = 0; i < array.length; i++) {
+            countArray[array[i]]++;
+        }
+        // 遍历输出结果
+        int index = 0;
+        int[] sortedArray = new int[array.length];
+        for (int i = 0; i < countArray.length; i++) {
+            for (int j = 0; j < countArray[i]; j++) {
+                sortedArray[index++] = i;
+            }
+        }
+        return sortedArray;
     }
 }
