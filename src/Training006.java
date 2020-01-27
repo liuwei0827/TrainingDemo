@@ -3,6 +3,7 @@ class Training006 {
         System.out.println("Hello World");
         Matrix m = new Matrix(3, 3);
         m.setMatrix();
+        System.out.println(m.find(11));
 
         for (int[] a : m.getmMatrix()) {
             for (int b : a) {
@@ -78,6 +79,27 @@ class Matrix {
                 System.out.print(mMatrix[i][start] + " ");
             }
         }
+    }
+
+    boolean find(int number) {
+        boolean found = false;
+        int rows = mMatrix.length;
+        int columns = mMatrix[0].length;
+        if (mMatrix != null && rows > 0 && columns > 0) {
+            int row = 0;
+            int column = columns - 1;
+            while (row < rows && column >= 0) {
+                if (mMatrix[row][column] == number) {
+                    found = true;
+                    break;
+                } else if (mMatrix[row][column] > number) {
+                    column--;
+                } else {
+                    row++;
+                }
+            }
+        }
+        return found;
     }
 
     int[][] mMatrix = null;
