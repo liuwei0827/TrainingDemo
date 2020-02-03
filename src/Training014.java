@@ -1,11 +1,16 @@
 class Training014 {
     public static void main(String[] args) {
         System.out.println();
+        //       1
+        //     2    3
+        //    4   5   6
+        //      7    8
         int[] pre = { 1, 2, 4, 7, 3, 5, 6, 8 };
         int[] in = { 4, 7, 2, 1, 5, 3, 8, 6 };
         Tree2 t = new Tree2();
         TreeNode treeNode = t.Construct(pre, in, pre.length);
-        System.out.println(treeNode.value);
+        BinaryTree bTree = new BinaryTree();
+        bTree.aft_order(treeNode);
     }
 }
 
