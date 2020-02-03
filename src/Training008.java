@@ -15,10 +15,8 @@ class Training008 {
         lSolution.insert(c, d);
         ListNode e = new ListNode(5);
         lSolution.insert(d, e);
-        e.pNextListNode = b;
 
-//        lSolution.printList(head);
-        System.out.println(lSolution.isCycle(head));
+        System.out.println(lSolution.FindNodeToTail(head, 2).value);
     }
 }
 
@@ -48,6 +46,28 @@ class ListSolution {
             }
         }
         return false;
+    }
+
+    // 链表中的倒数第k个节点
+    ListNode FindNodeToTail(ListNode headListNode, int k) {
+        if (headListNode == null || k == 0) {
+            return null;
+        }
+        ListNode aheadNode = headListNode;
+        ListNode behindNode = headListNode;
+        for (int i = 0; i < k - 1; i++) {
+            if (aheadNode.pNextListNode != null) {
+                aheadNode = aheadNode.pNextListNode;
+            } else {
+                return null;
+            }
+        }
+
+        while (aheadNode.pNextListNode != null) {
+            aheadNode = aheadNode.pNextListNode;
+            behindNode = behindNode.pNextListNode;
+        }
+        return behindNode;
     }
 
     void insert(ListNode lasListNode, ListNode pListNode) {
