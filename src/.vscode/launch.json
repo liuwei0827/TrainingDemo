@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Training015",
+            "request": "launch",
+            "mainClass": "Training015",
+            "projectName": "src_2ee255d"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Training014",
             "request": "launch",
             "mainClass": "Training014",
