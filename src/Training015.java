@@ -4,7 +4,8 @@ class Training015 {
         int[] a = { 1, 2, 3 };
         FullSort fs = new FullSort();
         // fs.fullSort(a, 0, a.length - 1);
-        fs.combination(a);
+//        fs.combination(a);
+        new Queen8().check(0);
     }
 }
 
@@ -41,6 +42,7 @@ class FullSort {
     }
 
     void combination(int src[], int num, StringBuilder sBuilder, int start) {
+        System.out.println(sBuilder);
         if (num == 0) {
             System.out.println(sBuilder);
         } else {
@@ -53,6 +55,38 @@ class FullSort {
             combination(src, num, sBuilder, start + 1);
         }
     }
+}
 
-    // 八皇后问题
+class Queen8 {
+    int max = 8;
+    int[] array = new int[max];
+
+    public void check(int n) {
+        if (n == max) {
+            print();
+            return;
+        }
+        for (int i = 0; i < max; i++) {
+            array[n] = i;
+            if (judge(n)) {
+                check(n + 1);
+            }
+        }
+    }
+
+    public void print() {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + 1 + "");
+        }
+        System.out.println();
+    }
+
+    public Boolean judge(int n) {
+        for (int i = 0; i < n; i++) {
+            if (array[i] == array[n] || Math.abs(n - i) == Math.abs(array[n] - array[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
