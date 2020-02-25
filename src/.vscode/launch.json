@@ -5,6 +5,13 @@
             "name": "CodeLens (Launch) - Training016",
             "request": "launch",
             "mainClass": "Training016",
+            "projectName": "src_2ee255d"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Training016",
+            "request": "launch",
+            "mainClass": "Training016",
             "projectName": "src_3c71e8a8"
         },
         {

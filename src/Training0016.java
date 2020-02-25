@@ -5,9 +5,10 @@ class Training016 {
         int[] coinValue = new int[] { 25, 21, 10, 5, 1 };
         int money = 63;
         int[] coinsUsed = new int[money + 1];
-        new DP().makeChange(coinValue, coinValue.length, money, coinsUsed);
-        System.out.println("面值为 " + (money) + " 的最小硬币数 : " + coinsUsed[money]);
-
+//        new DP();
+//        DP.makeChange(coinValue, coinValue.length, money, coinsUsed);
+//        System.out.println("面值为 " + (money) + " 的最小硬币数 : " + coinsUsed[money]);
+        System.out.println(new DP().maxProductAfterCutting(4));
     }
 }
 
@@ -38,5 +39,36 @@ class DP {
             }
             coinsUsed[cents] = minCoins;
         }
+    }
+
+    // 剪绳子问题
+    int maxProductAfterCutting(int length) {
+        if (length < 2) {
+            return 0;
+        }
+        if (length == 2) {
+            return 1;
+        }
+        if (length == 3) {
+            return 2;
+        }
+
+        int[] products = new int[length + 1];
+        products[0] = 0;
+        products[1] = 1;
+        products[2] = 2;
+        products[3] = 3;
+        int max = 0;
+        for (int i = 4; i <= length; i++) {
+            max = 0;
+            for (int j = 1; j <= i / 2; j++) {
+                int product = products[j] * products[i - j];
+                if (max < product) {
+                    max = product;
+                }
+            }
+            products[i] = max;
+        }
+        return products[length];
     }
 }
