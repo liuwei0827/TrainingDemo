@@ -4,17 +4,17 @@ class Trainning001 {
     }
 }
     // 单例模式
-class Singletion {
-    private Singletion() {
+class Singleton {
+    private Singleton() {
     };
 
-    private volatile static Singletion instance;
+    private volatile static Singleton instance;
 
-    public static Singletion getInstance() {
+    public static Singleton getInstance() {
         if (instance == null) {
-            synchronized (Singletion.class) {
+            synchronized (Singleton.class) {
                 if ((instance == null)) {
-                    instance = new Singletion();
+                    instance = new Singleton();
                 }
             }
         }
