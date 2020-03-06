@@ -1,7 +1,6 @@
 class Trainning001 {
     public static void main(String[] args) {
         System.out.print("Hello World");
-        Singletion object = Singletion.getInstance();
     }
 }
     // 单例模式

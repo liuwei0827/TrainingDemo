@@ -1,5 +1,3 @@
-import sun.font.ScriptRun;
-
 class Training013{
     public static void main(String[] args) {
         String src="We are happy!";
