@@ -1,6 +1,7 @@
 import java.util.Stack;
 
 class Training008 {
+    // 链表相关合集
     public static void main(String[] args) {
         System.out.println("Hello World");
         ListNode head = new ListNode();
@@ -47,6 +48,12 @@ class ListSolution {
         }
         return false;
     }
+
+    //链表中环的入口节点
+
+    //反转链表
+
+    //合并两个排序的链表
 
     // 链表中的倒数第k个节点
     ListNode FindNodeToTail(ListNode headListNode, int k) {
