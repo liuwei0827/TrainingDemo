@@ -7,17 +7,20 @@ class Training008 {
         ListNode head = new ListNode();
         ListSolution lSolution = new ListSolution();
         ListNode a = new ListNode(1);
-        lSolution.insert(head, a);
+        lSolution.connect(head, a);
         ListNode b = new ListNode(2);
-        lSolution.insert(a, b);
+        lSolution.connect(a, b);
         ListNode c = new ListNode(3);
-        lSolution.insert(b, c);
+        lSolution.connect(b, c);
         ListNode d = new ListNode(4);
-        lSolution.insert(c, d);
+        lSolution.connect(c, d);
         ListNode e = new ListNode(5);
-        lSolution.insert(d, e);
+        lSolution.connect(d, e);
+        lSolution.connect(e, b);
 
-        System.out.println(lSolution.FindNodeToTail(head, 2).value);
+        ListNode tmp = lSolution.EntryForCycle(head);
+        System.out.println(tmp.value);
+        // System.out.println(lSolution.FindNodeToTail(head, 2).value);
     }
 }
 
@@ -49,11 +52,32 @@ class ListSolution {
         return false;
     }
 
-    //链表中环的入口节点
+    // 链表中环的入口节点
+    ListNode EntryForCycle(ListNode headListNode) {
+        if (headListNode == null) {
+            return null;
+        }
+        if (isCycle(headListNode)) {
+            ListNode slow = headListNode.pNextListNode;
+            ListNode fast = headListNode.pNextListNode.pNextListNode;
+            while (slow != fast) {
+                slow = slow.pNextListNode;
+                fast = fast.pNextListNode.pNextListNode;
+            }
+            slow = headListNode;
+            while (slow != fast) {
+                slow = slow.pNextListNode;
+                fast = fast.pNextListNode;
+            }
+            return slow;
+        } else {
+            return null;
+        }
+    }
 
-    //反转链表
+    // 反转链表
 
-    //合并两个排序的链表
+    // 合并两个排序的链表
 
     // 链表中的倒数第k个节点
     ListNode FindNodeToTail(ListNode headListNode, int k) {
@@ -81,6 +105,10 @@ class ListSolution {
         lasListNode.pNextListNode = pListNode;
         pListNode.pNextListNode = null;
     }
+
+    void connect(ListNode lasListNode, ListNode pListNode) {
+        lasListNode.pNextListNode = pListNode;
+    }
 }
 
 class ListNode {
@@ -94,5 +122,6 @@ class ListNode {
 
     ListNode(int v) {
         value = v;
+        pNextListNode = null;
     }
 }
