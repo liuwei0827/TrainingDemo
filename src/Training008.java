@@ -7,24 +7,57 @@ class Training008 {
         ListNode head = new ListNode();
         ListSolution lSolution = new ListSolution();
         ListNode a = new ListNode(1);
-        lSolution.connect(head, a);
+        lSolution.insert(head, a);
         ListNode b = new ListNode(2);
-        lSolution.connect(a, b);
+        lSolution.insert(a, b);
         ListNode c = new ListNode(3);
-        lSolution.connect(b, c);
+        lSolution.insert(b, c);
         ListNode d = new ListNode(4);
-        lSolution.connect(c, d);
+        lSolution.insert(c, d);
         ListNode e = new ListNode(5);
-        lSolution.connect(d, e);
-        lSolution.connect(e, b);
+        lSolution.insert(d, e);
 
-        ListNode tmp = lSolution.EntryForCycle(head);
-        System.out.println(tmp.value);
-        // System.out.println(lSolution.FindNodeToTail(head, 2).value);
+        System.out.println(lSolution.FindNodeToTail(head, 2).value);
     }
 }
 
 class ListSolution {
+    // 删除值为K的节点
+    void deleteListNode(ListNode hNode, int value) {
+        if (hNode == null) {
+            return;
+        }
+        ListNode listNode = hNode;
+
+        // 头节点（有且只有）
+        if (listNode.pNextListNode == null && listNode.value == value) {
+            listNode = null;
+            return;
+        }
+
+        ListNode preNode = null;
+        // 非头节点
+        while (listNode.pNextListNode != null) {
+            if (listNode.value == value) {
+                doDelete(listNode);
+            }
+            preNode = listNode;
+            listNode = listNode.pNextListNode;
+        }
+        if (listNode.pNextListNode == null && listNode.value == value) {
+            listNode = null;
+            preNode.pNextListNode = null;
+        }
+    }
+
+    void doDelete(ListNode deledteNode) {
+        ListNode pNext = deledteNode.pNextListNode;
+        deledteNode.value = pNext.value;
+        deledteNode.pNextListNode = pNext.pNextListNode;
+
+        pNext = null;
+    }
+
     // 从尾到头打印链表（用stack来实现）
     void printList(ListNode headListNode) {
         Stack<ListNode> stack = new Stack<ListNode>();
@@ -53,27 +86,6 @@ class ListSolution {
     }
 
     // 链表中环的入口节点
-    ListNode EntryForCycle(ListNode headListNode) {
-        if (headListNode == null) {
-            return null;
-        }
-        if (isCycle(headListNode)) {
-            ListNode slow = headListNode.pNextListNode;
-            ListNode fast = headListNode.pNextListNode.pNextListNode;
-            while (slow != fast) {
-                slow = slow.pNextListNode;
-                fast = fast.pNextListNode.pNextListNode;
-            }
-            slow = headListNode;
-            while (slow != fast) {
-                slow = slow.pNextListNode;
-                fast = fast.pNextListNode;
-            }
-            return slow;
-        } else {
-            return null;
-        }
-    }
 
     // 反转链表
 
@@ -105,10 +117,6 @@ class ListSolution {
         lasListNode.pNextListNode = pListNode;
         pListNode.pNextListNode = null;
     }
-
-    void connect(ListNode lasListNode, ListNode pListNode) {
-        lasListNode.pNextListNode = pListNode;
-    }
 }
 
 class ListNode {
@@ -122,6 +130,5 @@ class ListNode {
 
     ListNode(int v) {
         value = v;
-        pNextListNode = null;
     }
 }
