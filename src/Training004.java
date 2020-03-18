@@ -168,7 +168,7 @@ class Sort {
         int p1 = L;
         int p2 = mid + 1;
         while (p1 <= mid && p2 <= R) {
-            if (array[p1] < array[p2]) {
+            if (array[p1] > array[p2]) {
                 tmp[i] = array[p2];
                 i++;
                 p2++;
