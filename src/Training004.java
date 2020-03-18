@@ -4,10 +4,9 @@ class Training004 {
         int[] a = { 1, 4, 6, 8, 3, 5, 9 };
 
         Sort s = new Sort();
-        // s.selectSort(a);
-        int[] sorteda = s.countSort(a);
+        s.mergeSort(a);
 
-        for (int i : sorteda) {
+        for (int i : a) {
             System.out.print(i + " ");
         }
     }
@@ -146,5 +145,47 @@ class Sort {
             }
         }
         return sortedArray;
+    }
+
+    // 并归排序
+    void mergeSort(int[] array) {
+        sort(array, 0, array.length - 1);
+    }
+
+    void sort(int[] array, int L, int R) {
+        if (L == R) {
+            return;
+        }
+        int mid = L + ((R - L) >> 1);
+        sort(array, L, mid);
+        sort(array, mid + 1, R);
+        merge(array, L, mid, R);
+    }
+
+    void merge(int[] array, int L, int mid, int R) {
+        int[] tmp = new int[R - L + 1];
+        int i = 0;
+        int p1 = L;
+        int p2 = mid + 1;
+        while (p1 <= mid && p2 <= R) {
+            if (array[p1] < array[p2]) {
+                tmp[i] = array[p2];
+                i++;
+                p2++;
+            } else {
+                tmp[i] = array[p1];
+                p1++;
+                i++;
+            }
+        }
+        while (p1 <= mid) {
+            tmp[i++] = array[p1++];
+        }
+        while (p2 <= R) {
+            tmp[i++] = array[p2++];
+        }
+        for (i = 0; i < tmp.length; i++) {
+            array[L + i] = tmp[i];
+        }
     }
 }
