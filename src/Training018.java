@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Training018 {
     // 二叉树合集
     public static void main(String[] args) {
@@ -9,12 +12,8 @@ class Training018 {
         TreeNode c = new TreeNode(3, f, g);
         TreeNode a = new TreeNode(1, b, c);
 
-        BinaryTree binaryTree = new BinaryTree();
-        binaryTree.pre_order(a);
-        System.out.println("\n");
-        BTsolution bTsolution=new BTsolution();
-        bTsolution.BTSMirror(a);
-        binaryTree.pre_order(a);
+        BTsolution bTsolution = new BTsolution();
+        bTsolution.printBinaryTreeFromTopToButton(a);
 
         System.out.println("\n");
         System.out.println("Hello World!");
@@ -42,6 +41,25 @@ class BTsolution {
     // 对称二叉树
 
     // 从上到下打印二叉树
+    void printBinaryTreeFromTopToButton(TreeNode rTree) {
+        if (rTree == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(rTree);
+
+        while (queue.size() > 0) {
+            TreeNode tmpBinaryTree = queue.poll();
+            System.out.print(tmpBinaryTree.value);
+
+            if (tmpBinaryTree.LeftNode != null) {
+                queue.offer(tmpBinaryTree.LeftNode);
+            }
+            if (tmpBinaryTree.RightNode != null) {
+                queue.offer(tmpBinaryTree.RightNode);
+            }
+        }
+    }
 
     // 二叉搜索树的后序遍历序列
 
