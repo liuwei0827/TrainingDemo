@@ -88,6 +88,21 @@ class ListSolution {
     // 链表中环的入口节点
 
     // 反转链表
+    ListNode reversListNode(ListNode pHeadListNode){
+        ListNode pReversNode=null;
+        ListNode pNode=pHeadListNode;
+        ListNode pPreListNode=null;
+        while(pNode!=null){
+            ListNode pNext=pNode.pNextListNode;
+            if(pNext==null){
+                pReversNode=pNode;
+            }
+            pNode.pNextListNode=pReversNode;
+            pReversNode=pNode;
+            pNode=pNext;
+        }
+        return pReversNode;
+    }
 
     // 合并两个排序的链表
 
