@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 class Training008 {
-    // 链表相关合集
+    // 链表相关合集
     public static void main(String[] args) {
         System.out.println("Hello World");
         ListNode head = new ListNode();
@@ -22,7 +22,7 @@ class Training008 {
 }
 
 class ListSolution {
-    // 删除值为K的节点
+    // 删除值为K的节点
     void deleteListNode(ListNode hNode, int value) {
         if (hNode == null) {
             return;
@@ -71,35 +71,65 @@ class ListSolution {
         }
     }
 
-    // 判断链表是否有环
-    boolean isCycle(ListNode headListNode) {
+    // 判断链表是否有环
+    ListNode isCycle(ListNode headListNode) {
+        if (headListNode == null) {
+            return null;
+        }
         ListNode p1 = headListNode;
-        ListNode p2 = headListNode;
-        while (p2 != null && p2.pNextListNode != null) {
-            p1 = p1.pNextListNode;
-            p2 = p2.pNextListNode.pNextListNode;
+        if (p1 == null) {
+            return null;
+        }
+        ListNode p2 = p1.pNextListNode;
+        while (p1 != null && p2 != null) {
             while (p1 == p2) {
-                return true;
+                return p2;
+            }
+            p1 = p1.pNextListNode;
+            if (p2.pNextListNode.pNextListNode) {
+                p2 = p2.pNextListNode.pNextListNode;
             }
         }
-        return false;
+        return null;
     }
 
-    // 链表中环的入口节点
+    // 链表中环的入口节点
+    ListNode EntryOfListNodeLoop(ListNode hListNode) {
+        ListNode meetingNode = isCycle(hListNode);
+        if (meetingNode == null) {
+            return null;
+        }
+        int nodesInLoop = 1;
+        ListNode pNode1 = meetingNode;
+        while (pNode1.pNextListNode != meetingNode) {
+            pNode1 = pNode1.pNextListNode;
+            nodesInLoop++;
+        }
+        pNode1 = hListNode;
+        for (int i = 0; i < nodesInLoop; i++) {
+            pNode1 = pNode1.pNextListNode;
+        }
+        ListNode pNode2 = hListNode;
+        while (pNode1 != pNode2) {
+            pNode1 = pNode1.pNextListNode;
+            pNode2 = pNode2.pNextListNode;
+        }
+        return pNode1;
+    }
 
-    // 反转链表
-    ListNode reversListNode(ListNode pHeadListNode){
-        ListNode pReversNode=null;
-        ListNode pNode=pHeadListNode;
-        ListNode pPreListNode=null;
-        while(pNode!=null){
-            ListNode pNext=pNode.pNextListNode;
-            if(pNext==null){
-                pReversNode=pNode;
+    // 反转链表
+    ListNode reversListNode(ListNode pHeadListNode) {
+        ListNode pReversNode = null;
+        ListNode pNode = pHeadListNode;
+        ListNode pPreListNode = null;
+        while (pNode != null) {
+            ListNode pNext = pNode.pNextListNode;
+            if (pNext == null) {
+                pReversNode = pNode;
             }
-            pNode.pNextListNode=pReversNode;
-            pReversNode=pNode;
-            pNode=pNext;
+            pNode.pNextListNode = pReversNode;
+            pReversNode = pNode;
+            pNode = pNext;
         }
         return pReversNode;
     }
