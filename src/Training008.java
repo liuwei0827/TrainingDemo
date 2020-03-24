@@ -78,7 +78,7 @@ class ListSolution {
         }
         ListNode p1 = headListNode;
         ListNode p2 = headListNode;
-        if(p1.pNextListNode!=null){
+        if (p1.pNextListNode != null) {
             p2 = p1.pNextListNode;
         }
         while (p1 != null && p2 != null) {
@@ -86,7 +86,7 @@ class ListSolution {
                 return p2;
             }
             p1 = p1.pNextListNode;
-            if (p2.pNextListNode.pNextListNode!=null) {
+            if (p2.pNextListNode.pNextListNode != null) {
                 p2 = p2.pNextListNode.pNextListNode;
             }
         }
@@ -135,19 +135,19 @@ class ListSolution {
     }
 
     // 合并两个排序的链表
-    ListNode mergeSortListNode(ListNode pHead1,ListNode pHead2){
-        if(pHead1==null){
+    ListNode mergeSortListNode(ListNode pHead1, ListNode pHead2) {
+        if (pHead1 == null) {
             return pHead2;
-        }else if(pHead2==null){
+        } else if (pHead2 == null) {
             return pHead1;
         }
-        ListNode pMerge=null;
-        if(pHead1.value<pHead2.value){
-            pMerge=pHead1;
-            pMerge.pNextListNode=mergeSortListNode(pHead1.pNextListNode, pHead2);
-        }else{
-            pMerge=pHead2;
-            pMerge.pNextListNode=mergeSortListNode(pHead1, pHead2.pNextListNode);
+        ListNode pMerge = null;
+        if (pHead1.value < pHead2.value) {
+            pMerge = pHead1;
+            pMerge.pNextListNode = mergeSortListNode(pHead1.pNextListNode, pHead2);
+        } else {
+            pMerge = pHead2;
+            pMerge.pNextListNode = mergeSortListNode(pHead1, pHead2.pNextListNode);
         }
         return pMerge;
     }
