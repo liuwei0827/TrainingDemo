@@ -135,6 +135,22 @@ class ListSolution {
     }
 
     // 合并两个排序的链表
+    ListNode mergeSortListNode(ListNode pHead1,ListNode pHead2){
+        if(pHead1==null){
+            return pHead2;
+        }else if(pHead2==null){
+            return pHead1;
+        }
+        ListNode pMerge=null;
+        if(pHead1.value<pHead2.value){
+            pMerge=pHead1;
+            pMerge.pNextListNode=mergeSortListNode(pHead1.pNextListNode, pHead2)
+        }else{
+            pMerge=pHead2;
+            pMerge.pNextListNode=mergeSortListNode(pHead1, pHead2.pNextListNode)
+        }
+        return pMerge
+    }
 
     // 链表中的倒数第k个节点
     ListNode FindNodeToTail(ListNode headListNode, int k) {
