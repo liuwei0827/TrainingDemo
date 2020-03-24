@@ -77,16 +77,16 @@ class ListSolution {
             return null;
         }
         ListNode p1 = headListNode;
-        if (p1 == null) {
-            return null;
+        ListNode p2 = headListNode;
+        if(p1.pNextListNode!=null){
+            p2 = p1.pNextListNode;
         }
-        ListNode p2 = p1.pNextListNode;
         while (p1 != null && p2 != null) {
             while (p1 == p2) {
                 return p2;
             }
             p1 = p1.pNextListNode;
-            if (p2.pNextListNode.pNextListNode) {
+            if (p2.pNextListNode.pNextListNode!=null) {
                 p2 = p2.pNextListNode.pNextListNode;
             }
         }
@@ -127,8 +127,8 @@ class ListSolution {
             if (pNext == null) {
                 pReversNode = pNode;
             }
-            pNode.pNextListNode = pReversNode;
-            pReversNode = pNode;
+            pNode.pNextListNode = pPreListNode;
+            pPreListNode = pNode;
             pNode = pNext;
         }
         return pReversNode;
@@ -144,12 +144,12 @@ class ListSolution {
         ListNode pMerge=null;
         if(pHead1.value<pHead2.value){
             pMerge=pHead1;
-            pMerge.pNextListNode=mergeSortListNode(pHead1.pNextListNode, pHead2)
+            pMerge.pNextListNode=mergeSortListNode(pHead1.pNextListNode, pHead2);
         }else{
             pMerge=pHead2;
-            pMerge.pNextListNode=mergeSortListNode(pHead1, pHead2.pNextListNode)
+            pMerge.pNextListNode=mergeSortListNode(pHead1, pHead2.pNextListNode);
         }
-        return pMerge
+        return pMerge;
     }
 
     // 链表中的倒数第k个节点
