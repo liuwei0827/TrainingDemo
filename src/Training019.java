@@ -1,8 +1,8 @@
 class Training019{
     public static void main(String[] args) {
-        String tmp="2";
-        char tmp2='2';
-        int n=tmp2-'0';
-        System.out.println(n);
+        int[] tmp = new int[5];
+        for(int i=0;i<5;i++){
+            System.out.print(tmp[i]);
+        }
     }
 }

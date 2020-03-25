@@ -2,7 +2,7 @@ class Training012 {
     public static void main(String[] args) {
         System.out.println("Hello World");
         BigNumberSolution b = new BigNumberSolution();
-        System.out.println(b.dobigNumberMultiply("1", "123"));
+        System.out.println(b.dobigNumberMultiply("0", "99"));
     }
 }
 
@@ -49,13 +49,9 @@ class BigNumberSolution {
 
     // 大数相乘
     String dobigNumberMultiply(String stringA, String stringB) {
-        int[] Multiply = new int[stringA.length() + stringB.length() - 1];
-        for (int i = 0; i < Multiply.length; i++) {
-            Multiply[i] = 0;
-        }
         int[] arrayA = new int[stringA.length()];
         int[] arrayB = new int[stringB.length()];
-        
+        int[] Multiply = new int[stringA.length() + stringB.length() - 1];
 
         for (int i = 0; i < stringA.length(); i++) {
             arrayA[i] = stringA.charAt(stringA.length() - 1 - i) - '0';
@@ -66,19 +62,21 @@ class BigNumberSolution {
 
         for (int i = 0; i < stringA.length(); i++) {
             for (int j = 0; j < stringB.length(); j++) {
-                     Multiply[i + j] += arrayA[i] * arrayB[j];
+                Multiply[i + j] += arrayA[i] * arrayB[j];
             }
         }
         String ret = "";
         int carry = 0;
-        for (int i = 0; i <Multiply.length; i++) {
+        for (int i = 0; i < Multiply.length; i++) {
             int tmp = Multiply[i] + carry;
             ret = String.valueOf(tmp % 10) + ret;
             carry = tmp / 10;
         }
-        if(carry!=0){
+        if (carry != 0) {
             ret = String.valueOf(carry) + ret;
         }
-      return ret;
-   }
+        int tmp = Integer.parseInt(ret);
+        ret = Integer.toString(tmp);
+        return ret;
+    }
 }
