@@ -11,10 +11,12 @@ class Training018 {
         TreeNode b = new TreeNode(2, d, e);
         TreeNode c = new TreeNode(3, f, g);
         TreeNode a = new TreeNode(1, b, c);
+        int data[] = { 4, 6, 12, 8, 16, 14, 10 };
 
         BTsolution bTsolution = new BTsolution();
-        bTsolution.printBinaryTreeFromTopToButton(a);
+        // bTsolution.printBinaryTreeFromTopToButton(a);
 
+        System.out.println(bTsolution.VerifySquenceOfBST(data, 0, data.length - 1));
         System.out.println("\n");
         System.out.println("Hello World!");
     }
@@ -62,6 +64,32 @@ class BTsolution {
     }
 
     // 二叉搜索树的后序遍历序列
+    boolean VerifySquenceOfBST(int[] data, int start, int end) {
+        int root = data[end];
+        int leftEnd = start;
+        for (int i = start; i < end; i++) {
+            if (data[i] > root) {
+                break;
+            }
+            leftEnd = i;
+        }
+        int rightStart = leftEnd + 1;
+        for (int i = rightStart; i < end; i++) {
+            if (data[i] < root) {
+                return false;
+            }
+        }
+        boolean left = true;
+        if (leftEnd > start) {
+            left = VerifySquenceOfBST(data, start, leftEnd);
+        }
+        boolean right = true;
+        if (rightStart < end) {
+            right = VerifySquenceOfBST(data, rightStart, end - 1);
+        }
+
+        return left && right;
+    }
 
     // 二叉树中和为某一值的路径
 

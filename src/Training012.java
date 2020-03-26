@@ -2,7 +2,7 @@ class Training012 {
     public static void main(String[] args) {
         System.out.println("Hello World");
         BigNumberSolution b = new BigNumberSolution();
-        System.out.println(b.dobigNumberMultiply("0", "99"));
+        System.out.println(b.dobigNumberMultiply("123", "123"));
     }
 }
 
