@@ -41,6 +41,22 @@ class BTsolution {
     }
 
     // 对称二叉树
+    Boolean isSymmetrical(TreeNode rNode) {
+        return isSymmetrical(rNode, rNode);
+    }
+
+    Boolean isSymmetrical(TreeNode pNode1, TreeNode pNode2) {
+        if (pRoot1 == null && pRoot2 == null)
+            return true;
+
+        if (pRoot1 == null || pRoot2 == null)
+            return false;
+
+        if (pRoot1.value != pRoot2.value)
+            return false;
+
+        return isSymmetrical(pRoot1.LeftNode, pRoot2.RightNode) && isSymmetrical(pRoot1.RightNode, pRoot2.LeftNode);
+    }
 
     // 从上到下打印二叉树
     void printBinaryTreeFromTopToButton(TreeNode rTree) {
