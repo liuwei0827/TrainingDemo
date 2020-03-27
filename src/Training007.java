@@ -7,6 +7,7 @@ class Training007 {
     }
 }
 
+// 数组相关集合
 class FindNumber {
     // 在一个长度为n的数组中所有数字在0-n-1范围，
     // 找出任意一个重复的数字
