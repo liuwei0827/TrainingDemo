@@ -80,7 +80,7 @@ class Matrix {
             }
         }
     }
-
+    // 二维数组查找数字
     boolean find(int number) {
         boolean found = false;
         int rows = mMatrix.length;
