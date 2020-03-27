@@ -20,6 +20,7 @@ class Training005 {
     }
 }
 
+// 二叉树相关集合
 class BinaryTree {
     // 二叉树的深度
     int treeDeep(TreeNode treeNode) {

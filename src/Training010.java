@@ -18,6 +18,7 @@ class Training010 {
     }
 }
 
+// 二叉堆和优先队列相关集合
 class BinaryHeap {
     // 新建二叉堆
     void buildHeap(int[] array) {

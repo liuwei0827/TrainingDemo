@@ -12,6 +12,7 @@ class Training016 {
     }
 }
 
+// 动态规划问题
 class DP {
     // 青蛙跳台问题
     public int qingWa(int a) {

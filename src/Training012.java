@@ -6,6 +6,7 @@ class Training012 {
     }
 }
 
+// 大数相加&相乘
 class BigNumberSolution {
     // 大数相加
     // int的范围：-2^31~2^32-1

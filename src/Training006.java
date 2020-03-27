@@ -16,6 +16,7 @@ class Training006 {
     }
 }
 
+// 二维数组相关集合
 class Matrix {
     // 对角线创建二维数组
     void setMatrix() {

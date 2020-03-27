@@ -12,6 +12,7 @@ class Training0017 {
     }
 }
 
+// 生产者消费者模式
 class Productor extends Thread {
     public Productor(LinkedBlockingQueue<Integer> Queue) {
         this.queue = Queue;
