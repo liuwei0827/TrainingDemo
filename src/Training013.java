@@ -7,6 +7,7 @@ class Training013{
     }
 }
 
+// 字符串相关集合
 class StringSolution{
     // 空格替换成%20
     String ReplaceBlank(String src){

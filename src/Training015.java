@@ -9,8 +9,8 @@ class Training015 {
     }
 }
 
+// 全排列问题
 class FullSort {
-    // 全排列问题
     void fullSort(int[] src, int start, int end) {
         if (start == end) {
             for (int var : src) {

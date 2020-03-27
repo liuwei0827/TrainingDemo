@@ -2,7 +2,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class Training018 {
-    // 二叉树合集
     public static void main(String[] args) {
         TreeNode d = new TreeNode(4, null, null);
         TreeNode e = new TreeNode(5, null, null);
@@ -22,6 +21,7 @@ class Training018 {
     }
 }
 
+// 二叉树相关合集二
 class BTsolution {
     // 二叉树镜像
     void BTSMirror(TreeNode rTree) {

@@ -12,7 +12,7 @@ class Training004 {
     }
 }
 
-// 各种常用排序算法
+// 排序算法相关集合
 class Sort {
     // 冒泡排序
     int[] bubbleSort(int[] src) {

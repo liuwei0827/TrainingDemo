@@ -20,7 +20,7 @@ class Training005 {
     }
 }
 
-// 二叉树相关集合
+// 二叉树相关集合一
 class BinaryTree {
     // 二叉树的深度
     int treeDeep(TreeNode treeNode) {
@@ -129,7 +129,7 @@ class BinaryTree {
 
     // 后序非递归TODO
 
-    // 广度遍历TODO
+    // 广度遍历
     void width_order(TreeNode pNode) {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(pNode);

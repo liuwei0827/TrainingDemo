@@ -23,6 +23,7 @@ class Training009 {
     }
 }
 
+// 链表相关集合二
 class CommonNode {
     // 两个链表的公共节点
     ListNode FindNode(ListNode pListNode1, ListNode pListNode2) {

@@ -4,7 +4,7 @@ class Training014 {
     }
 }
 
-// 贪心算法
+// 贪心算法TODO
 class GreedyAlgorithm{
 
 }

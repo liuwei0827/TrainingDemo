@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 class Training008 {
-    // 链表相关合集
     public static void main(String[] args) {
         System.out.println("Hello World");
         ListNode head = new ListNode();
@@ -21,6 +20,7 @@ class Training008 {
     }
 }
 
+// 链表相关合集一
 class ListSolution {
     // 删除值为K的节点
     void deleteListNode(ListNode hNode, int value) {

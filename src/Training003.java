@@ -7,7 +7,7 @@ class Trainging003 {
     }
 }
 
-// 二分法
+// 二分法相关集合
 class solution {
     int find(int[] src, int n) {
         if (n < 0) {
