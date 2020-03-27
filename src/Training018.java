@@ -46,16 +46,16 @@ class BTsolution {
     }
 
     Boolean isSymmetrical(TreeNode pNode1, TreeNode pNode2) {
-        if (pRoot1 == null && pRoot2 == null)
+        if (pNode1 == null && pNode2 == null)
             return true;
 
-        if (pRoot1 == null || pRoot2 == null)
+        if (pNode1 == null || pNode2 == null)
             return false;
 
-        if (pRoot1.value != pRoot2.value)
+        if (pNode1.value != pNode2.value)
             return false;
 
-        return isSymmetrical(pRoot1.LeftNode, pRoot2.RightNode) && isSymmetrical(pRoot1.RightNode, pRoot2.LeftNode);
+        return isSymmetrical(pNode1.LeftNode, pNode2.RightNode) && isSymmetrical(pNode1.RightNode, pNode2.LeftNode);
     }
 
     // 从上到下打印二叉树
