@@ -5,9 +5,9 @@ class Training016 {
         int[] coinValue = new int[] { 25, 21, 10, 5, 1 };
         int money = 63;
         int[] coinsUsed = new int[money + 1];
-//        new DP();
-//        DP.makeChange(coinValue, coinValue.length, money, coinsUsed);
-//        System.out.println("面值为 " + (money) + " 的最小硬币数 : " + coinsUsed[money]);
+        // new DP();
+        // DP.makeChange(coinValue, coinValue.length, money, coinsUsed);
+        // System.out.println("面值为 " + (money) + " 的最小硬币数 : " + coinsUsed[money]);
         System.out.println(new DP().maxProductAfterCutting(4));
     }
 }
@@ -71,5 +71,29 @@ class DP {
             products[i] = max;
         }
         return products[length];
+    }
+
+    // 求在一个m×n的棋盘的每一格都放有一个礼物的最大值
+    int getMaxValue(int[][] gift) {
+        if (gift == null) {
+            return 0;
+        }
+        int row = gift.length;
+        int column = gift[0].length;
+        int[][] maxVaules = new int[row][column];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                int left = 0;
+                int up = 0;
+                if (i > 0) {
+                    up = maxVaules[i - 1][j];
+                }
+                if (j > 0) {
+                    left = maxVaules[i][j - 1];
+                }
+                maxVaules[i][j] = Math.max(up, left) + gift[i][j];
+            }
+        }
+        return maxVaules[row - 1][column - 1];
     }
 }
