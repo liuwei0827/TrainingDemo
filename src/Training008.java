@@ -22,40 +22,31 @@ class Training008 {
 
 // 链表相关合集一
 class ListSolution {
-    // 删除值为K的节点
+    // 删除值为K的节点（试题6补充）
     void deleteListNode(ListNode hNode, int value) {
         if (hNode == null) {
             return;
         }
         ListNode listNode = hNode;
-
+        ListNode deletedNode = null;
         // 头节点（有且只有）
-        if (listNode.pNextListNode == null && listNode.value == value) {
-            listNode = null;
-            return;
-        }
-
-        ListNode preNode = null;
-        // 非头节点
-        while (listNode.pNextListNode != null) {
-            if (listNode.value == value) {
-                doDelete(listNode);
+        if (listNode.value == value) {
+            deletedNode = listNode;
+            hNode = hNode.pNextListNode;
+            deletedNode = null;
+        } else {
+            while (listNode.pNextListNode != null) {
+                while (listNode.pNextListNode != null && listNode.pNextListNode.value != value) {
+                    listNode = listNode.pNextListNode;
+                }
+                if (listNode.pNextListNode != null && listNode.pNextListNode.value == value) {
+                    deletedNode = listNode.pNextListNode;
+                    listNode.pNextListNode = listNode.pNextListNode.pNextListNode;
+                }
+                deletedNode = null;
+                listNode = listNode.pNextListNode;
             }
-            preNode = listNode;
-            listNode = listNode.pNextListNode;
         }
-        if (listNode.pNextListNode == null && listNode.value == value) {
-            listNode = null;
-            preNode.pNextListNode = null;
-        }
-    }
-
-    void doDelete(ListNode deledteNode) {
-        ListNode pNext = deledteNode.pNextListNode;
-        deledteNode.value = pNext.value;
-        deledteNode.pNextListNode = pNext.pNextListNode;
-
-        pNext = null;
     }
 
     // 从尾到头打印链表（用stack来实现）（试题6）
