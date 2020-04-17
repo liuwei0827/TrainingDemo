@@ -58,7 +58,7 @@ class ListSolution {
         pNext = null;
     }
 
-    // 从尾到头打印链表（用stack来实现）
+    // 从尾到头打印链表（用stack来实现）（试题6）
     void printList(ListNode headListNode) {
         Stack<ListNode> stack = new Stack<ListNode>();
         ListNode pListNode = headListNode.pNextListNode;
