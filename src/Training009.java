@@ -24,8 +24,12 @@ class Training009 {
 }
 
 // 链表相关集合二
+// 
+class ListNodeSolution2{
+    // TODO 复杂链表的复制（试题35）
+}
 class CommonNode {
-    // 两个链表的公共节点
+    // 两个链表的公共节点（试题52）
     ListNode FindNode(ListNode pListNode1, ListNode pListNode2) {
         int nLenght1 = GetListLength(pListNode1);
         int nLenght2 = GetListLength(pListNode2);

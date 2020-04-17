@@ -71,7 +71,7 @@ class ListSolution {
         }
     }
 
-    // 判断链表是否有环
+    // 判断链表是否有环（试题23）
     ListNode isCycle(ListNode headListNode) {
         if (headListNode == null) {
             return null;
@@ -93,7 +93,7 @@ class ListSolution {
         return null;
     }
 
-    // 链表中环的入口节点
+    // 链表中环的入口节点（试题23）
     ListNode EntryOfListNodeLoop(ListNode hListNode) {
         ListNode meetingNode = isCycle(hListNode);
         if (meetingNode == null) {
@@ -117,7 +117,7 @@ class ListSolution {
         return pNode1;
     }
 
-    // 反转链表
+    // 反转链表（试题24）
     ListNode reversListNode(ListNode pHeadListNode) {
         ListNode pReversNode = null;
         ListNode pNode = pHeadListNode;
@@ -134,7 +134,7 @@ class ListSolution {
         return pReversNode;
     }
 
-    // 合并两个排序的链表
+    // 合并两个排序的链表（试题25）
     ListNode mergeSortListNode(ListNode pHead1, ListNode pHead2) {
         if (pHead1 == null) {
             return pHead2;
@@ -152,7 +152,7 @@ class ListSolution {
         return pMerge;
     }
 
-    // 链表中的倒数第k个节点
+    // 链表中的倒数第k个节点（试题22）
     ListNode FindNodeToTail(ListNode headListNode, int k) {
         if (headListNode == null || k == 0) {
             return null;
