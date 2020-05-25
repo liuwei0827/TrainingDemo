@@ -2,4 +2,4 @@
 Traning for general algorithm practice
 
 
-asdasdasd
+asda
