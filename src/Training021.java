@@ -6,7 +6,7 @@ public class Training021 {
 }
 
 class IsUgly {
-    // 判断丑数（只由2/3/5因式分解的数）123ddd111
+    // 判断丑数（只由2/3/5因式的数）123ddd111
     public boolean IsUglyTrueorFalse(int number) {
         while (number % 2 == 0) {
             number /= 2;
